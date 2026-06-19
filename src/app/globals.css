@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF6F0;
+  --foreground: #2A1810;
+  
+  /* Original Brown & Gold palette with darker text for better visibility */
+  --brand-brown-dark: #2A1810;
+  --brand-brown: #6B4423;
+  --brand-brown-light: #8B5A2B;
+  --brand-gold: #B8860B;
+  --brand-gold-light: #F5F0E8;
+  
+  /* Legacy alias colors for backward compatibility */
+  --brand-green-dark: #2A1810;
+  --brand-green: #6B4423;
+  --brand-green-light: #8B5A2B;
+  --brand-orange: #B8860B;
+  --brand-orange-light: #F5F0E8;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif, .font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Layout helpers to keep footer at the bottom without overlapping */
+.site-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.site-main {
+  flex: 1 0 auto;
+  display: block;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--brand-brown), var(--brand-gold));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--brand-brown-dark), var(--brand-gold));
+}
+
+/* Custom Animation Easing and Keyframes */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes clipReveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-clip-reveal {
+  animation: clipReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Responsive snap-scroll utilities for mobile swiping */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-align-center {
+  scroll-snap-align: center;
+}
